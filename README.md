@@ -3,7 +3,7 @@
 Shiv temple created for Decentraland Game JAM.
 ![alt text](https://github.com/TheBossBaby/Shiv-Temple/blob/master/screenshots/1.jpeg)
 
-Explore the scene: [This link](http://something) takes you to a copy of the scene deployed to a remote server where you can interact with it!.
+Explore the scene: [This link](http://export.godfrey.now.sh/) takes you to a copy of the scene deployed to a remote server where you can interact with it!.
 
 # Install the CLI
 
