@@ -24,8 +24,8 @@ $:  dcl start
 Any dependencies are installed and then the CLI will open the scene in a new browser tab automatically.
 
 # Getting Started
-We all love to hear music, sometimes move our body with the rythem of it .<br/>
-Rhythm and dance are deeply linked in history and practice.
+We all love to hear music, sometimes move our body with the rhythm of it .<br/>
+**Rhythm and dance** are deeply linked in history and practice.
 
 _Tāṇḍavam_ is a divine dance performed by the god Shiv. Shiv's Tandav is described as a vigorous dance that is the source of the cycle of _creation, preservation_ and _dissolution_.
 <br/>
