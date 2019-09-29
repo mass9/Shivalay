@@ -44,6 +44,32 @@ signboard_shivalay.addComponentOrReplace(new OnClick(() => {
 }))
 engine.addEntity(signboard_shivalay)
 
+const signboard_meditation = new Entity()
+signboard_meditation.setParent(scene)
+const meditation_transform = new Transform({
+  position: new Vector3(16,0,25.8),
+  rotation: Quaternion.Euler(90,0,280)
+})
+const meditation_signboard_gltf = new GLTFShape("models/medidation.glb")
+signboard_meditation.addComponentOrReplace(meditation_signboard_gltf)
+signboard_meditation.addComponentOrReplace(meditation_transform)
+signboard_meditation.addComponentOrReplace(new OnClick(() => {
+  MeditateAndUnlockTripuraForm(message, door)
+}))
+engine.addEntity(signboard_meditation)
+
+const signboard_shopping = new Entity()
+signboard_shopping.setParent(scene)
+const shopping_transform = new Transform({
+  position: new Vector3(48.5,0,30.3),
+  rotation: Quaternion.Euler(0,270,0)
+})
+const shopping_signboard_gltf = new GLTFShape("models/shopping.glb")
+signboard_shopping.addComponentOrReplace(shopping_signboard_gltf)
+signboard_shopping.addComponentOrReplace(shopping_transform)
+
+engine.addEntity(signboard_meditation)
+
 const shiveling_with_Colliderv4 = new Entity()
 shiveling_with_Colliderv4.setParent(scene)
 const gltfShape = new GLTFShape('models/Shiveling_with_Colliderv4.glb')
@@ -1066,9 +1092,6 @@ soundClip_2.volume = 0.00002
 fountain_02.addComponentOrReplace(new AudioSource(soundClip_2))
 fountain_02.getComponent(AudioSource).playing = true
 fountain_02.getComponent(AudioSource).loop = true
-fountain_02.addComponentOrReplace(new OnClick(() => {
-  MeditateAndUnlockTripuraForm(message, door)
-}))
 engine.addEntity(fountain_02)
 
 const grassPatchSmall_01_3 = new Entity()
@@ -8161,3 +8184,30 @@ shivling_for_sale.addComponentOrReplace(new OnClick(() => {
   checkPossiblityOfDoorOpen(message, door)
 }))
 engine.addEntity(shivling_for_sale)
+
+const krishna_for_sale = new Entity()
+krishna_for_sale.setParent(scene)
+const krishna_for_sale_shape = new GLTFShape("models/For_Sale/Da_nav.glb")
+krishna_for_sale.addComponentOrReplace(krishna_for_sale_shape)
+const krishna_for_sale_transform = new Transform({
+  position: new Vector3(55.5, 1.6, 24.8),
+  scale: new Vector3(0.1,0.1,0.1),
+  rotation: Quaternion.Euler(0,270,0)
+})
+krishna_for_sale.addComponentOrReplace(krishna_for_sale_transform)
+engine.addEntity(krishna_for_sale)
+
+const thai_for_sale = new Entity()
+thai_for_sale.setParent(scene)
+const thai_for_sale_shape = new GLTFShape("models/For_Sale/Thai_Female_Sandstone_V2.3.glb")
+thai_for_sale.addComponentOrReplace(thai_for_sale_shape)
+const thai_for_sale_transform = new Transform({
+  position: new Vector3(55.7, 1.5, 27.8),
+  scale: new Vector3(15,15,15),
+  rotation: Quaternion.Euler(0,270,0)
+})
+thai_for_sale.addComponentOrReplace(new OnClick(() => {
+  message.value = "MANA transaction not availabe, will soon add more 3d models"
+}))
+thai_for_sale.addComponentOrReplace(thai_for_sale_transform)
+engine.addEntity(thai_for_sale)

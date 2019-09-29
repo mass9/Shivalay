@@ -18,7 +18,7 @@ export function checkPossiblityOfDoorOpen(message: UIText, door: Entity)
 }
 
 export function MeditateAndUnlockTripuraForm(message: UIText, door: Entity) {
-    let timeRemaning = 5
+    let timeRemaning = 60
     let entitty = new Entity()
     engine.addEntity(entitty)
     entitty.addComponentOrReplace(new utils.Interval(1000, (): void => {
