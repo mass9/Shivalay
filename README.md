@@ -50,8 +50,9 @@ Interact with the environment , help animals and utilize the **_Nirvana_**
 
 
 # Built With
-Flask as Backend and Frontend technology.<br/>
-ML Algorithm to use Trained model of VGG16 , OpenCV filters and transfer the style.
+**Blender** : 3D Modelling
+**Decentaland SDK **
+**TypeScript** : Programming Language
 
 # Authors
 List of who participated in this project:<br/>
