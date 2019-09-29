@@ -50,8 +50,8 @@ Interact with the environment , help animals and utilize the **_Nirvana_**
 
 
 # Built With
-**Blender** : 3D Modelling
-**Decentaland SDK **
+**Blender** : 3D Modelling</br>
+**Decentaland SDK** </br>
 **TypeScript** : Programming Language
 
 # Authors
