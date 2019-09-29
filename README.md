@@ -35,4 +35,30 @@ While the _Rudra Tandava_ depicts his violent nature, first as the creator and l
 
 # Usage
 
-Click on the tree to make a bird appear and start flying randomly around the scene. Each time you click the tree, a new bird appears until a maximum number is reached.
+Click on the on model aligned at the boundaries of shivling.<br/>
+_Riddle will appear on screen_<br/>
+Each riddle is associated with the elements presented in the environments. You have to search the element, click on it.
+
+If you have clicked on correct element , _The dance form will be unlocked!_ <br/>
+
+Puzzle are simple and easy to understood.
+
+Once you've unlocked all puzzle , the main gate will be open. **No Spoiler**
+
+Interact with the environment , help animals and utilize the **_Nirvana_**
+
+
+
+# Built With
+Flask as Backend and Frontend technology.<br/>
+ML Algorithm to use Trained model of VGG16 , OpenCV filters and transfer the style.
+
+# Authors
+List of who participated in this project:<br/>
+Prashant K Tiwari [**3D Modelling**] <br/>
+Pranav Kushwaha [**Programmer**] <br/>
+
+# Acknowledgments
+>We are living in future :rocket:<br/>
+>Inspiration :sparkles: <br/>
+>etc :octocat:
