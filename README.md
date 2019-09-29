@@ -1,5 +1,5 @@
 # Shivalay
-## "Clamness is the cradle of power"
+## "Calmness is the cradle of power"
 Shiv temple created for Decentraland Game JAM.
 ![alt text](https://github.com/TheBossBaby/Shiv-Temple/blob/master/screenshots/1.jpeg)
 
