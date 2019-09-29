@@ -7899,8 +7899,15 @@ const fifth_form_animation = new AnimationState("Natraj|NatrajAction_fifth")
 // fifth_form_animation.looping = false
 sceneAnimator_1.addClip(fifth_form_animation)
 fifth_form.addComponent(new OnClick(() => {
-  fifth_form_animation.play()
-  message.value = ' Sati and Shiva Tandava'
+  if(forms_unlocked[4])
+  {
+    fifth_form_animation.play()
+    message.value = 'Sati and Shiva Tandava'
+  }
+  else
+  {
+    message.value = "He is endless, he is the creator, he is the destroyer...."
+  }
   clearText()
 }))
 engine.addEntity(fifth_form)
@@ -8036,8 +8043,15 @@ const fifth_form_animation_2 = new AnimationState("Natraj|NatrajAction_fifth")
 // fifth_form_animation_2.looping = false
 sceneAnimator_2.addClip(fifth_form_animation_2)
 fifth_form_2.addComponent(new OnClick(() => {
-  fifth_form_animation_2.play()
-  message.value = ' Sati and Shiva Tandava'
+  if(forms_unlocked[4])
+  {
+    fifth_form_animation_2.play()
+    message.value = 'Sati and Shiva Tandava'
+  }
+  else
+  {
+    message.value = "He is endless, he is the creator, he is the destroyer...."
+  }
   clearText()
 }))
 engine.addEntity(fifth_form_2)
@@ -8073,7 +8087,7 @@ const canvas = new UICanvas()
 
 const message = new UIText(canvas)
 message.value = 'Explore the shivalay and achive nirvana...'
-message.fontSize = 30
+message.fontSize = 20
 message.width = 400
 message.height = 50
 message.vAlign = 'bottom'
@@ -8107,4 +8121,9 @@ const shivling_for_sale_transform = new Transform({
   rotation: Quaternion.Euler(0,270,0)
 })
 shivling_for_sale.addComponentOrReplace(shivling_for_sale_transform)
+shivling_for_sale.addComponentOrReplace(new OnClick(() => {
+  forms_unlocked[4] = true
+  message.value = "You found the shiv that means you already found Sati... You have unlocked Sati and Shiva Tandava, keep exploring"
+  checkPossiblityOfDoorOpen()
+}))
 engine.addEntity(shivling_for_sale)
