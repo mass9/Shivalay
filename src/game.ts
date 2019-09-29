@@ -3,7 +3,7 @@ import {SoundManager} from "./modules/soundManager"
 import { LerpData, LerpMove } from "./modules/walk";
 import { Behavior, Goal } from "./modules/switchGoals";
 // import{AnimationManager} from "./modules/animationManager"
-
+import{forms_unlocked, checkPossiblityOfDoorOpen} from "./modules/explorationManager"
 // Add systems
 engine.addSystem(new LerpMove())
 
@@ -29,6 +29,11 @@ const transform_1 = new Transform({
   rotation: Quaternion.Euler(0,35,0)
 })
 signboard_shivalay.addComponentOrReplace(transform_1)
+signboard_shivalay.addComponentOrReplace(new OnClick(() => {
+  forms_unlocked[1] = true
+  message.value = "You have unlocked Anand Tandav, keep exploring"
+  checkPossiblityOfDoorOpen()
+}))
 engine.addEntity(signboard_shivalay)
 
 const shiveling_with_Colliderv4 = new Entity()
@@ -1104,7 +1109,11 @@ audio_clip.volume = 0.000001
 templeMoon_01.addComponentOrReplace(new AudioSource(audio_clip))
 templeMoon_01.getComponent(AudioSource).playing = true
 templeMoon_01.getComponent(AudioSource).loop = true
-
+templeMoon_01.addComponentOrReplace(new OnClick(() => {
+  message.value = "You have unlocked Sandhya Tandav dance form of Shiv, explore more"
+  forms_unlocked[0] = true
+  checkPossiblityOfDoorOpen()
+}))
 engine.addEntity(templeMoon_01)
 
 const hayStack = new Entity()
@@ -1626,6 +1635,12 @@ const transform_137 = new Transform({
   scale: new Vector3(0.42264973081037416, 0.42264973081037416, 0.42264973081037416)
 })
 pedestal_01.addComponentOrReplace(transform_137)
+pedestal_01.addComponentOrReplace(new OnClick(() => {
+  forms_unlocked[2] = true
+  message.value = "You completed shiv by shakti, Om Namah Shivay......."
+  clearText()
+  checkPossiblityOfDoorOpen()
+}))
 engine.addEntity(pedestal_01)
 
 const chineseHouse_01 = new Entity()
@@ -7785,9 +7800,14 @@ const first_form_animation = new AnimationState("Natraj|first_form_main_ismain")
 sceneAnimator_1.addClip(first_form_animation)
 first_form.addComponentOrReplace(sceneAnimator_1)
 first_form.addComponent(new OnClick(() => {
+  if(forms_unlocked[0])
+  {
     first_form_animation.play()
     message.value = 'Sandhya Tandava'
-    clearText()
+  }
+  else
+    message.value = 'There is far away place, That has both light and dark side, its gravity pulls earth oceans'
+  clearText()
   }))
 first_form.addComponentOrReplace(transform_694)
 engine.addEntity(first_form)
@@ -7806,9 +7826,14 @@ second.addComponentOrReplace(sceneAnimator_1)
 const second_form_animation = new AnimationState("Natraj|Second")
 sceneAnimator_1.addClip(second_form_animation)
 second.addComponent(new OnClick(() => {
+  if(forms_unlocked[1])
+  {
     second_form_animation.play()
     message.value = ' Ananda Tandava'
-    clearText()
+  }
+  else
+    message.value = "I am here waiting for, all who are wise, But you need to find the first to win any prize..."
+  clearText()
   }))
 engine.addEntity(second)
 
@@ -7827,8 +7852,13 @@ const third_form_animation = new AnimationState("Natraj|Third_form")
 // third_form_animation.looping = false
 sceneAnimator_1.addClip(third_form_animation)
 third_form.addComponent(new OnClick(() => {
-  third_form_animation.play()
-  message.value = ' Shakti Tandava'
+  if(forms_unlocked[2])
+  {
+    third_form_animation.play()
+    message.value = ' Shakti Tandava'
+  }
+  else
+    message.value = "I all about life since I was first alive....I can rush like a river I can rool like a wave..."
   clearText()
 }))
 engine.addEntity(third_form)
@@ -7910,8 +7940,13 @@ const first_form_animation_2 = new AnimationState("Natraj|first_form_main_ismain
 // first_form_animation_2.looping = false
 sceneAnimator_2.addClip(first_form_animation_2)
 first_form_2.addComponent(new OnClick(() => {
-  first_form_animation_2.play()
-  message.value = 'Sandhya Tandava'
+  if(forms_unlocked[0])
+  {
+    first_form_animation_2.play()
+    message.value = 'Sandhya Tandava'
+  }
+  else
+    message.value = 'There is far away place, That has both light and dark side, its gravity pulls earth oceans'  
   clearText()
 }))
 
@@ -7931,8 +7966,13 @@ const second_form_animation_2 = new AnimationState("Natraj|Second")
 // second_form_animation_2.looping = false
 sceneAnimator_2.addClip(second_form_animation_2)
 second_2.addComponent(new OnClick(() => {
-  second_form_animation_2.play()
-  message.value = ' Ananda Tandava'
+  if(forms_unlocked[1])
+  {
+    second_form_animation_2.play()
+    message.value = ' Ananda Tandava'
+  }
+  else
+    message.value = "I am here waiting for, all who are wise, But you need to find the first to win any prize..."
   clearText()
 }))
 engine.addEntity(second_2)
@@ -7951,8 +7991,13 @@ const third_form_animation_2 = new AnimationState("Natraj|Third_form")
 // third_form_animation_2.looping = false
 sceneAnimator_2.addClip(third_form_animation_2)
 third_form_2.addComponent(new OnClick(() => {
-  third_form_animation_2.play()
-  message.value = ' Shakti Tandava'
+  if(forms_unlocked[2])
+  {
+    third_form_animation_2.play()
+    message.value = ' Shakti Tandava'
+  }
+  else
+    message.value = "I all about life since I was first alive....I can rush like a river I can rool like a wave..."
   clearText()
 }))
 engine.addEntity(third_form_2)
@@ -8027,12 +8072,13 @@ engine.addEntity(six_form_2)
 const canvas = new UICanvas()
 
 const message = new UIText(canvas)
-message.value = ''
-message.fontSize = 50
-message.width = 120
-message.height = 30
+message.value = 'Explore the shivalay and achive nirvana...'
+message.fontSize = 30
+message.width = 400
+message.height = 50
 message.vAlign = 'bottom'
 message.color = new Color4(255,215,0,1)
+message.textWrapping = true
 
 function clearText() {
   let timeRemaning = 6
@@ -8048,3 +8094,17 @@ function clearText() {
     }
   }))
 }
+
+// Shop Work
+
+const shivling_for_sale = new Entity()
+shivling_for_sale.setParent(scene)
+const shivling_for_sale_shape = new GLTFShape("models/For_Sale/small_shiv.glb")
+shivling_for_sale.addComponentOrReplace(shivling_for_sale_shape)
+const shivling_for_sale_transform = new Transform({
+  position: new Vector3(57, 1.5, 22.8),
+  scale: new Vector3(5,5,5),
+  rotation: Quaternion.Euler(0,270,0)
+})
+shivling_for_sale.addComponentOrReplace(shivling_for_sale_transform)
+engine.addEntity(shivling_for_sale)
