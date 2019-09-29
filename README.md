@@ -48,6 +48,8 @@ Once you've unlocked all puzzle , the main gate will be open. **No Spoiler**
 Interact with the environment , help animals and utilize the **_Nirvana_**
 
 
+# Objective
+To build an RPG based puzzle game that helps to unlock the importance of meditation and inner peace. This game will broaden the way of thinking and how to improve our brainpower.
 
 # Built With
 **Blender** : 3D Modelling</br>
