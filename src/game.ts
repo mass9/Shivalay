@@ -2,8 +2,7 @@ import utils from "../node_modules/decentraland-ecs-utils/index"
 import {SoundManager} from "./modules/soundManager"
 import { LerpData, LerpMove } from "./modules/walk";
 import { Behavior, Goal } from "./modules/switchGoals";
-// import{AnimationManager} from "./modules/animationManager"
-import{forms_unlocked, checkPossiblityOfDoorOpen} from "./modules/explorationManager"
+import{forms_unlocked, checkPossiblityOfDoorOpen, MeditateAndUnlockTripuraForm} from "./modules/explorationManager"
 // Add systems
 engine.addSystem(new LerpMove())
 
@@ -32,7 +31,7 @@ signboard_shivalay.addComponentOrReplace(transform_1)
 signboard_shivalay.addComponentOrReplace(new OnClick(() => {
   forms_unlocked[1] = true
   message.value = "You have unlocked Anand Tandav, keep exploring"
-  checkPossiblityOfDoorOpen()
+  checkPossiblityOfDoorOpen(message)
 }))
 engine.addEntity(signboard_shivalay)
 
@@ -1058,6 +1057,9 @@ soundClip_2.volume = 0.00002
 fountain_02.addComponentOrReplace(new AudioSource(soundClip_2))
 fountain_02.getComponent(AudioSource).playing = true
 fountain_02.getComponent(AudioSource).loop = true
+fountain_02.addComponentOrReplace(new OnClick(() => {
+  MeditateAndUnlockTripuraForm(message)
+}))
 engine.addEntity(fountain_02)
 
 const grassPatchSmall_01_3 = new Entity()
@@ -1112,7 +1114,7 @@ templeMoon_01.getComponent(AudioSource).loop = true
 templeMoon_01.addComponentOrReplace(new OnClick(() => {
   message.value = "You have unlocked Sandhya Tandav dance form of Shiv, explore more"
   forms_unlocked[0] = true
-  checkPossiblityOfDoorOpen()
+  checkPossiblityOfDoorOpen(message)
 }))
 engine.addEntity(templeMoon_01)
 
@@ -1623,6 +1625,11 @@ const transform_136 = new Transform({
   scale: new Vector3(0.7113248654051869, 0.7113248654051869, 0.7113248654051869)
 })
 greenHouse_01.addComponentOrReplace(transform_136)
+greenHouse_01.addComponentOrReplace(new OnClick(() => {
+  forms_unlocked[5] = true
+  message.value = "As the greenhouse is most unique in the environment, You have unlocked the most unique tandav of shiv....."
+  checkPossiblityOfDoorOpen(message)
+}))
 engine.addEntity(greenHouse_01)
 
 const pedestal_01 = new Entity()
@@ -1639,7 +1646,7 @@ pedestal_01.addComponentOrReplace(new OnClick(() => {
   forms_unlocked[2] = true
   message.value = "You completed shiv by shakti, Om Namah Shivay......."
   clearText()
-  checkPossiblityOfDoorOpen()
+  checkPossiblityOfDoorOpen(message)
 }))
 engine.addEntity(pedestal_01)
 
@@ -7094,6 +7101,7 @@ const transform_631 = new Transform({
   scale: new Vector3(1, 1, 1)
 })
 grassPatchLarge_01_2.addComponentOrReplace(transform_631)
+
 engine.addEntity(grassPatchLarge_01_2)
 
 const tableRock_01_3 = new Entity()
@@ -7878,8 +7886,13 @@ const fourth_form_animation = new AnimationState("Natraj|Fourth")
 // fourth_form_animation.looping = false
 sceneAnimator_1.addClip(fourth_form_animation)
 fourth_form.addComponent(new OnClick(() => {
-  fourth_form_animation.play()
-  message.value = ' Tripura Tandava'
+  if(forms_unlocked[3])
+  {
+    fourth_form_animation.play()
+    message.value = 'Tripura Tandava'
+  }
+  else
+    message.value = 'Realise with a still mind the state between sleep and wakefulness, Unaware of this Truth, people have become inheritors of sorrow, Now let not mind be outgoing turn in inward...'
   clearText()
 }))
 engine.addEntity(fourth_form)
@@ -7924,12 +7937,16 @@ const transform_699 = new Transform({
 sixth_form.addComponentOrReplace(transform_699)
 sixth_form.addComponentOrReplace(sceneAnimator_1)
 const sixth_form_animation = new AnimationState("Natraj|Sixth_main")
-// sixth_form_animation.looping = false
 sceneAnimator_1.addClip(sixth_form_animation)
 sixth_form.addComponent(new OnClick(() => {
-  sixth_form_animation.play()
-  message.value = ' Ardhanaari Tandava'
-  clearText()
+  if(forms_unlocked[5])
+  {
+    sixth_form_animation.play()
+    message.value = 'Ardhanaari Tandava'
+  }
+  else
+    message.value = 'I didn\'t realise who I was until I stopped being who I wasn\'t... What\'s the most unique.....'
+  clearText()  
 }))
 engine.addEntity(sixth_form)
 
@@ -7976,7 +7993,7 @@ second_2.addComponent(new OnClick(() => {
   if(forms_unlocked[1])
   {
     second_form_animation_2.play()
-    message.value = ' Ananda Tandava'
+    message.value = 'Ardhanaari Tandava'
   }
   else
     message.value = "I am here waiting for, all who are wise, But you need to find the first to win any prize..."
@@ -8023,8 +8040,13 @@ const fourth_form_animation_2 = new AnimationState("Natraj|Fourth")
 // fourth_form_animation_2.looping = false
 sceneAnimator_2.addClip(fourth_form_animation_2)
 fourth_form_2.addComponent(new OnClick(() => {
-  fourth_form_animation_2.play()
-  message.value = ' Tripura Tandava'
+  if(forms_unlocked[3])
+  {
+    fourth_form_animation_2.play()
+    message.value = 'Tripura Tandava'
+  }
+  else
+    message.value = 'Realise with a still mind the state between sleep and wakefulness, Unaware of this Truth, people have become inheritors of sorrow, Now let not mind be outgoing turn in inward...'
   clearText()
 }))
 engine.addEntity(fourth_form_2)
@@ -8040,7 +8062,6 @@ const transform_704 = new Transform({
 fifth_form_2.addComponentOrReplace(transform_704)
 fifth_form_2.addComponentOrReplace(sceneAnimator_2)
 const fifth_form_animation_2 = new AnimationState("Natraj|NatrajAction_fifth")
-// fifth_form_animation_2.looping = false
 sceneAnimator_2.addClip(fifth_form_animation_2)
 fifth_form_2.addComponent(new OnClick(() => {
   if(forms_unlocked[4])
@@ -8068,12 +8089,16 @@ six_form_2.addComponentOrReplace(transform_705)
 
 six_form_2.addComponentOrReplace(sceneAnimator_2)
 const sixth_form_animation_2 = new AnimationState("Natraj|Sixth_main")
-// sixth_form_animation_2.looping = false
 sceneAnimator_2.addClip(sixth_form_animation_2)
 
 six_form_2.addComponent(new OnClick(() => {
-  sixth_form_animation_2.play()
-  message.value = ' Ardhanaari Tandava'
+  if(forms_unlocked[5])
+  {
+    sixth_form_animation_2.play()
+    message.value = 'Adranari Tandava'
+  }
+  else
+  message.value = 'I didn\'t realise who I was until I stopped being who I wasn\'t... What\'s the most unique.....'
   clearText()
 }))
 
@@ -8086,11 +8111,11 @@ engine.addEntity(six_form_2)
 const canvas = new UICanvas()
 
 const message = new UIText(canvas)
-message.value = 'Explore the shivalay and achive nirvana...'
+message.value = 'Explore the shivalay and achive NIRVANA...'
 message.fontSize = 20
 message.width = 400
 message.height = 50
-message.vAlign = 'bottom'
+// message.vAlign = 'bottom'
 message.color = new Color4(255,215,0,1)
 message.textWrapping = true
 
@@ -8124,6 +8149,6 @@ shivling_for_sale.addComponentOrReplace(shivling_for_sale_transform)
 shivling_for_sale.addComponentOrReplace(new OnClick(() => {
   forms_unlocked[4] = true
   message.value = "You found the shiv that means you already found Sati... You have unlocked Sati and Shiva Tandava, keep exploring"
-  checkPossiblityOfDoorOpen()
+  checkPossiblityOfDoorOpen(message)
 }))
 engine.addEntity(shivling_for_sale)
