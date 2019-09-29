@@ -18,6 +18,15 @@ const transform = new Transform({
 scene.addComponentOrReplace(transform)
 engine.addEntity(scene)
 
+const door = new Entity()
+door.setParent(scene)
+door.addComponentOrReplace(new BoxShape)
+door.addComponentOrReplace(new Transform({
+  position: new Vector3(33,4,21),
+  scale:  new Vector3(4,8,0.5)
+}))
+engine.addEntity(door)
+
 const signboard_shivalay = new Entity()
 signboard_shivalay.setParent(scene)
 const gltf_signboard_shape = new GLTFShape('models/Board_v1.glb')
@@ -31,7 +40,7 @@ signboard_shivalay.addComponentOrReplace(transform_1)
 signboard_shivalay.addComponentOrReplace(new OnClick(() => {
   forms_unlocked[1] = true
   message.value = "You have unlocked Anand Tandav, keep exploring"
-  checkPossiblityOfDoorOpen(message)
+  checkPossiblityOfDoorOpen(message, door)
 }))
 engine.addEntity(signboard_shivalay)
 
@@ -1058,7 +1067,7 @@ fountain_02.addComponentOrReplace(new AudioSource(soundClip_2))
 fountain_02.getComponent(AudioSource).playing = true
 fountain_02.getComponent(AudioSource).loop = true
 fountain_02.addComponentOrReplace(new OnClick(() => {
-  MeditateAndUnlockTripuraForm(message)
+  MeditateAndUnlockTripuraForm(message, door)
 }))
 engine.addEntity(fountain_02)
 
@@ -1114,7 +1123,7 @@ templeMoon_01.getComponent(AudioSource).loop = true
 templeMoon_01.addComponentOrReplace(new OnClick(() => {
   message.value = "You have unlocked Sandhya Tandav dance form of Shiv, explore more"
   forms_unlocked[0] = true
-  checkPossiblityOfDoorOpen(message)
+  checkPossiblityOfDoorOpen(message, door)
 }))
 engine.addEntity(templeMoon_01)
 
@@ -1628,7 +1637,7 @@ greenHouse_01.addComponentOrReplace(transform_136)
 greenHouse_01.addComponentOrReplace(new OnClick(() => {
   forms_unlocked[5] = true
   message.value = "As the greenhouse is most unique in the environment, You have unlocked the most unique tandav of shiv....."
-  checkPossiblityOfDoorOpen(message)
+  checkPossiblityOfDoorOpen(message, door)
 }))
 engine.addEntity(greenHouse_01)
 
@@ -1646,7 +1655,7 @@ pedestal_01.addComponentOrReplace(new OnClick(() => {
   forms_unlocked[2] = true
   message.value = "You completed shiv by shakti, Om Namah Shivay......."
   clearText()
-  checkPossiblityOfDoorOpen(message)
+  checkPossiblityOfDoorOpen(message, door)
 }))
 engine.addEntity(pedestal_01)
 
@@ -8149,6 +8158,6 @@ shivling_for_sale.addComponentOrReplace(shivling_for_sale_transform)
 shivling_for_sale.addComponentOrReplace(new OnClick(() => {
   forms_unlocked[4] = true
   message.value = "You found the shiv that means you already found Sati... You have unlocked Sati and Shiva Tandava, keep exploring"
-  checkPossiblityOfDoorOpen(message)
+  checkPossiblityOfDoorOpen(message, door)
 }))
 engine.addEntity(shivling_for_sale)
