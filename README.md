@@ -1,27 +1,10 @@
 # Shivalay
 ## "Calmness is the cradle of power"
 Shiv temple created for Decentraland Game JAM.
-![alt text]( https://github.com/TheBossBaby/Shiv-Temple/blob/master/screenshots/1.jpeg )
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/1.jpeg)
 
 Explore the scene: [This link](http://export.godfrey.now.sh/) takes you to a copy of the scene deployed to a remote server where you can interact with it!.
 
-# Install the CLI
-
-Download and install the Decentraland CLI by running the following command
-```
-npm i -g decentraland
-```
-
-Previewing the scene
-
-Once you've installed the CLI, download this example and navigate to its directory from your terminal or command prompt.
-
-from the scene directory:
-```
-$:  dcl start
-```
-
-Any dependencies are installed and then the CLI will open the scene in a new browser tab automatically.
 
 # Getting Started
 We all love to hear music, sometimes move our body with the rhythm of it .<br/>
@@ -46,6 +29,16 @@ Puzzle are simple and easy to understood.
 Once you've unlocked all puzzle , the main gate will be open. **No Spoiler**
 
 Interact with the environment , help animals and utilize the **_Nirvana_**
+
+# ScreenShots
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/2.jpeg)
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/9.jpeg)
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/4.jpeg)
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/5.jpeg)
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/6.jpeg)
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/7.jpeg)
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/8.jpeg)
+![alt text]( https://github.com/mass9/Shivalay/blob/master/(1)%20Screenshots/3.jpeg)
 
 
 # Objective
